@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+
+/* ================= MAIN LAYOUT ================= */
+
+.auth-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: white;
+}
+
+/* ================= LEFT FORM ================= */
+
+.form-section {
+  width: 55%;
+  padding: 35px 60px; /* reduced */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-section h2 {
+  color: #0b1c3d;
+  font-size: 26px;   /* reduced */
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.form-section p {
+  color: #666;
+  margin-bottom: 18px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ================= WIDTH CONTROL ================= */
+
+.form-section input,
+.form-section button,
+.form-section .row,
+.form-section .divider,
+.form-section .switch,
+.form-section .link {
+  width: 100%;
+  max-width: 380px;   /* slightly smaller */
+}
+
+/* ================= INPUTS ================= */
+
+input,
+select {
+  padding: 9px 12px;      /* reduced */
+  margin-bottom: 9px;     /* reduced */
+  border-radius: 6px;
+  border: 1px solid #e1e1e1;
+  font-size: 13px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #0b1c3d;
+  box-shadow: 0 0 0 2px rgba(11, 28, 61, 0.08);
+}
+
+/* ================= BUTTONS ================= */
+
+button {
+  background: #0b1c3d;
+  color: white;
+  border: none;
+  padding: 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 6px;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(11, 28, 61, 0.15);
+}
+
+.google-btn {
+  background: white;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+/* ================= TEXT ================= */
+
+.divider {
+  text-align: center;
+  margin: 12px 0;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.switch {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #666;
+  text-align: center;
+}
+
+.switch span {
+  color: #0b1c3d;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.switch span:hover {
+  text-decoration: underline;
+}
+
+.link {
+  font-size: 12px;
+  color: #0b1c3d;
+  cursor: pointer;
+  margin-bottom: 6px;
+  text-align: right;
+}
+
+/* ================= ROW INPUTS ================= */
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.row input {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* ================= IMAGE SIDE ================= */
+
+.image-section {
+  width: 45%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= CURVED IMAGE ================= */
+
+.church-style {
+  border-top-left-radius: 280px;   /* slightly smaller curve */
+  border-bottom-left-radius: 280px;
+  overflow: hidden;
+}
+
+/* ================= SMALL LAPTOP TWEAK ================= */
+
+@media (max-width: 1400px) {
+
+  .form-section {
+    padding: 30px 40px;
+  }
+
+  .form-section h2 {
+    font-size: 22px;
+  }
+
+  input {
+    padding: 8px 10px;
+    font-size: 12.5px;
+  }
+
+  button {
+    padding: 8px;
+    font-size: 12.5px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+  .auth-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .form-section {
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .image-section {
+    width: 100%;
+    height: 250px;
+    order: -1;
+  }
+
+  .church-style {
+    border-radius: 0;
+  }
+
+  .image-section img {
+    border-radius: 0;
+  }
+}

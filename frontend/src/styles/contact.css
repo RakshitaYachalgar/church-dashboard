@@ -1,0 +1,106 @@
+.contact-hero {
+  padding: 120px 20px 60px;
+  text-align: center;
+  background: linear-gradient(to bottom, #f7f9fc, #ffffff);
+}
+
+.contact-hero h1 {
+  font-size: 3rem;
+  color: #0b1f3a;
+}
+
+.contact-hero p {
+  max-width: 600px;
+  margin: 15px auto 0;
+  color: #555;
+}
+
+/* INFO */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 60px 10%;
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.contact-card h3 {
+  margin-bottom: 8px;
+  color: #0b1f3a;
+}
+
+/* FORM */
+.contact-form-section {
+  padding: 80px 20px;
+  background: #f7f9fc;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form-box {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.contact-form-box h2 {
+  margin-bottom: 8px;
+  color: #0b1f3a;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.contact-form button {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #0b1f3a, #123d7a);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  opacity: 0.95;
+}
+
+/* FAITH */
+.contact-faith {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.contact-faith h2 {
+  color: #0b1f3a;
+}
+
+.contact-faith p {
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: #555;
+}

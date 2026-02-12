@@ -1,0 +1,152 @@
+
+/* HERO */
+.church-hero {
+  min-height: 85vh;
+  background: radial-gradient(circle at top, #0d2344, #08162b);
+  color: white;
+  text-align: center;
+  padding: 120px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.church-hero h1 {
+  font-size: 3rem;
+  max-width: 800px;
+  font-weight: 700;
+}
+
+.church-hero p {
+  margin-top: 16px;
+  max-width: 650px;
+  font-size: 1.05rem;
+  opacity: 0.9;
+  line-height: 1.7;
+}
+
+.church-hero button {
+  margin-top: 30px;
+}
+
+/* SECTIONS */
+.church-section {
+  padding: 90px 8%;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.church-section.light {
+  background: white;
+}
+
+.church-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 50px;
+  color: #0d2344;
+}
+
+/* GRID */
+.church-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.church-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  font-weight: 500;
+  color: #0d2344;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+}
+
+.church-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+/* CTA */
+.church-cta {
+  padding: 100px 8%;
+  background: linear-gradient(135deg, #0d2344, #102d57);
+  text-align: center;
+  color: white;
+}
+
+.church-cta h2 {
+  font-size: 2.4rem;
+}
+
+.church-cta p {
+  margin: 14px 0 30px;
+  opacity: 0.9;
+}
+.section-subtext {
+  max-width: 700px;
+  margin: -30px auto 50px;
+  color: #555;
+  line-height: 1.6;
+}
+.church-highlight {
+  padding: 100px 8%;
+  background: linear-gradient(135deg, #0d2344, #102d57);
+  display: flex;
+  justify-content: center;
+}
+
+.highlight-box {
+  max-width: 900px;
+  background: white;
+  padding: 60px;
+  border-radius: 24px;
+  text-align: left;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.highlight-box h2 {
+  color: #0d2344;
+  margin-bottom: 16px;
+}
+
+.highlight-box p {
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.highlight-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.highlight-box li {
+  margin-bottom: 10px;
+  color: #0d2344;
+  font-weight: 500;
+}
+.church-section h2,
+.church-hero h1,
+.church-cta h2 {
+  letter-spacing: -0.5px;
+}
+.church-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+@media (max-width: 700px) {
+  .church-hero h1 {
+    font-size: 2rem;
+  }
+
+  .highlight-box {
+    padding: 30px;
+  }
+
+  .church-section {
+    padding: 70px 6%;
+  }
+}

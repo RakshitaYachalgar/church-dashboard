@@ -1,0 +1,205 @@
+.cp-container {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+  height: 100vh;
+  background: #f8fafc;
+  font-family: "Inter", sans-serif;
+}
+
+/* ================= LEFT SIDE ================= */
+
+.cp-left {
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: cpFadeInUp 0.55s ease-out;
+}
+
+.cp-left h1 {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.cp-left p {
+  color: #64748b;
+  margin-bottom: 18px;
+  max-width: 460px;
+  font-size: 0.9rem;
+}
+
+/* ================= FORM ================= */
+
+.cp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.cp-form input,
+.cp-form textarea {
+  width: 100%;
+  height: 38px;                 /* smaller height */
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d0dae6;
+  background: #ffffff;
+  font-size: 0.85rem;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.cp-form input:focus,
+.cp-form textarea:focus {
+  border-color: #0f172a;
+}
+
+/* ================= BUTTON ================= */
+
+.cp-form button {
+  margin-top: 8px;
+  height: 40px;
+  border-radius: 6px;
+  border: none;
+  background: #0f172a;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cp-form button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.error-msg {
+  margin-top: 10px;
+  color: #b91c1c;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* ================= RIGHT IMAGE ================= */
+
+.cp-right {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 30%;
+  border-bottom-left-radius: 30%;
+  animation: cpFadeInRight 0.7s ease-out;
+  transition: transform 0.35s ease;
+}
+
+.cp-right img:hover {
+  transform: scale(1.01);
+}
+
+/* ================= SUCCESS MODAL ================= */
+
+.cp-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-modal-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
+  width: 320px;
+}
+
+.check {
+  font-size: 28px;
+  color: green;
+  margin-bottom: 8px;
+}
+
+.cp-modal-card button {
+  margin-top: 16px;
+  padding: 8px 18px;
+  background: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes cpFadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cpFadeInRight {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ================= SMALLER LAPTOP TWEAK ================= */
+
+@media (max-width: 1400px) {
+  .cp-left {
+    padding: 25px 30px;
+  }
+
+  .cp-form {
+    max-width: 340px;
+  }
+
+  .cp-form input {
+    height: 36px;
+    font-size: 0.82rem;
+  }
+
+  .cp-form button {
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  .cp-left h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+  .cp-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .cp-right {
+    display: none;
+  }
+
+  .cp-left {
+    padding: 40px 20px;
+  }
+
+  .cp-form {
+    max-width: 100%;
+  }
+}

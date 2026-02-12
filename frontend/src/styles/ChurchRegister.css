@@ -1,0 +1,159 @@
+/* ================= CHURCH REGISTER LAYOUT ================= */
+
+.church-auth-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+}
+
+/* ================= LEFT SIDE ================= */
+
+.church-form-section {
+  width: 55%;
+  padding: 35px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= HEADING ================= */
+
+.church-form-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0b1c3d;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.church-form-section p {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ================= FORM WIDTH CONTROL ================= */
+
+.church-form-wrapper {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= INPUTS ================= */
+
+.church-form-wrapper input,
+.church-form-wrapper select {
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #e1e1e1;
+  font-size: 13px;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.church-form-wrapper input:focus,
+.church-form-wrapper select:focus {
+  border-color: #0b1c3d;
+}
+
+/* ================= BUTTON ================= */
+
+.church-form-wrapper button {
+  background: #0b1c3d;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+  transition: 0.2s ease;
+}
+
+.church-form-wrapper button:hover {
+  opacity: 0.9;
+}
+
+/* ================= RIGHT IMAGE ================= */
+
+.church-image-section {
+  width: 45%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.church-image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= CURVED IMAGE ================= */
+
+.church-style {
+  border-top-left-radius: 300px;
+  border-bottom-left-radius: 300px;
+  overflow: hidden;
+}
+
+/* ================= SMALLER DESKTOP TWEAK ================= */
+
+@media (max-width: 1400px) {
+
+  .church-form-section {
+    padding: 30px 40px;
+  }
+
+  .church-form-wrapper {
+    max-width: 380px;
+  }
+
+  .church-form-wrapper input,
+  .church-form-wrapper select {
+    padding: 9px 12px;
+    font-size: 12.5px;
+  }
+
+  .church-form-wrapper button {
+    padding: 9px;
+    font-size: 13px;
+  }
+
+  .church-form-section h2 {
+    font-size: 24px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .church-auth-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .church-form-section {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .church-image-section {
+    width: 100%;
+    height: 220px;
+    order: -1;
+  }
+
+  .church-style {
+    border-radius: 0;
+  }
+}

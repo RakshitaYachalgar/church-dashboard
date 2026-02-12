@@ -1,0 +1,235 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//////////////////////////////////////////////////////
+// 1️⃣ ROLE MASTER
+//////////////////////////////////////////////////////
+
+model tbl_role_master {
+  role_id          Int      @id @default(autoincrement())
+  role_code        String   @unique @db.VarChar(50)
+  role_desc        String?  @db.VarChar(150)
+  role_created_at  DateTime @default(now())
+
+  church_users     tbl_church_user[]
+  platform_users   tbl_platform_user[]
+}
+
+//////////////////////////////////////////////////////
+// 2️⃣ COMMUNITY USER — CORE
+//////////////////////////////////////////////////////
+
+model tbl_user_1 {
+  usr_id             String   @id @default(uuid()) @db.Uuid
+  usr_name           String   @db.VarChar(150)
+  usr_email          String   @unique @db.VarChar(255)
+  usr_phone          String?  @unique @db.VarChar(20)
+  usr_password       String   @db.Text
+
+  usr_status         String   @default("ACTIVE") @db.VarChar(20)
+  usr_email_verified Boolean  @default(false)
+  usr_phone_verified Boolean  @default(false)
+
+  usr_created_at     DateTime @default(now())
+  usr_created_by     String?  @db.Uuid
+
+  profile            tbl_user_2?
+  church_users       tbl_church_user[]
+}
+
+//////////////////////////////////////////////////////
+// 3️⃣ COMMUNITY USER — PROFILE
+//////////////////////////////////////////////////////
+
+model tbl_user_2 {
+  usr_id             String   @id @db.Uuid
+  usr_address        String?  @db.Text
+  usr_city           String?  @db.VarChar(100)
+  usr_state          String?  @db.VarChar(100)
+  usr_country        String?  @db.VarChar(100)
+  usr_pincode        String?  @db.VarChar(20)
+  usr_gender         String?  @db.VarChar(20)
+  usr_dob            DateTime?
+  usr_profile_image  String?  @db.Text
+
+  usr_created_at     DateTime @default(now())
+  usr_created_by     String?  @db.Uuid
+
+  user tbl_user_1 @relation(fields: [usr_id], references: [usr_id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// 4️⃣ PLATFORM ADMIN — CORE
+//////////////////////////////////////////////////////
+
+model tbl_platform_1 {
+  plt_id             String   @id @default(uuid()) @db.Uuid
+  plt_name           String   @db.VarChar(150)
+  plt_email          String   @unique @db.VarChar(255)
+  plt_phone          String?  @unique @db.VarChar(20)
+  plt_password       String   @db.Text
+
+  plt_status         String   @default("ACTIVE") @db.VarChar(20)
+  plt_email_verified Boolean  @default(false)
+  plt_phone_verified Boolean  @default(false)
+
+  plt_created_at     DateTime @default(now())
+  plt_created_by     String?  @db.Uuid
+
+  profile            tbl_platform_2?
+  platform_roles     tbl_platform_user[]
+  approved_churches  tbl_church[]
+  approved_apps      tbl_church_applicants[]
+}
+
+//////////////////////////////////////////////////////
+// 5️⃣ PLATFORM ADMIN — PROFILE
+//////////////////////////////////////////////////////
+
+model tbl_platform_2 {
+  plt_id             String   @id @db.Uuid
+  plt_address        String?  @db.Text
+  plt_city           String?  @db.VarChar(100)
+  plt_state          String?  @db.VarChar(100)
+  plt_country        String?  @db.VarChar(100)
+  plt_pincode        String?  @db.VarChar(20)
+  plt_gender         String?  @db.VarChar(20)
+  plt_dob            DateTime?
+  plt_profile_image  String?  @db.Text
+
+  plt_created_at     DateTime @default(now())
+  plt_created_by     String?  @db.Uuid
+
+  platform tbl_platform_1 @relation(fields: [plt_id], references: [plt_id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// 6️⃣ CHURCH APPLICATIONS
+//////////////////////////////////////////////////////
+
+model tbl_church_applicants {
+  chr_app_id          String   @id @default(uuid()) @db.Uuid
+  chr_app_code        String?  @unique @db.Char(8)
+
+  chr_app_name        String?  @db.VarChar(150)
+  chr_app_email       String?  @db.VarChar(255)
+  chr_app_denomination String? @db.VarChar(100)
+  chr_app_location    String?  @db.Text
+  chr_app_address     String?  @db.VarChar(255)   // ✅ ADD THIS LINE
+  chr_app_timezone    String?  @db.VarChar(50)
+
+  chr_app_city        String?  @db.VarChar(100)
+  chr_app_state       String?  @db.VarChar(100)
+  chr_app_country     String?  @db.VarChar(100)
+  chr_app_pincode     String?  @db.VarChar(20)
+
+  chr_app_status      String   @default("PENDING") @db.VarChar(20)
+  chr_app_approved_by String?  @db.Uuid
+  chr_app_approved_at DateTime?
+
+  chr_app_applied_on  DateTime @default(now())
+
+  approver tbl_platform_1? @relation(fields: [chr_app_approved_by], references: [plt_id])
+}
+
+
+//////////////////////////////////////////////////////
+// 7️⃣ CHURCH
+//////////////////////////////////////////////////////
+
+model tbl_church {
+  chr_id               String   @id @default(uuid()) @db.Uuid
+  chr_code             String   @unique @db.VarChar(50)
+  chr_name             String   @db.VarChar(150)
+
+  chr_email            String?  @db.VarChar(255)
+  chr_denomination     String?  @db.VarChar(100)
+  chr_location         String?  @db.Text
+  chr_timezone         String?  @db.VarChar(50)
+  chr_subscription_plan String? @db.VarChar(50)
+
+  chr_approval_status  String   @default("PENDING") @db.VarChar(20)
+  chr_approved_by      String?  @db.Uuid
+  chr_approved_at      DateTime?
+
+  chr_address          String?  @db.Text
+  chr_city             String?  @db.VarChar(100)
+  chr_state            String?  @db.VarChar(100)
+  chr_country          String?  @db.VarChar(100)
+  chr_pincode          String?  @db.VarChar(20)
+
+  chr_created_at       DateTime @default(now())
+  chr_created_by       String?  @db.Uuid
+
+  approver      tbl_platform_1?   @relation(fields: [chr_approved_by], references: [plt_id])
+  church_users  tbl_church_user[]
+}
+
+//////////////////////////////////////////////////////
+// 8️⃣ CHURCH ↔ USER ROLE MAPPING
+//////////////////////////////////////////////////////
+
+model tbl_church_user {
+  chr_usr_id          Int      @id @default(autoincrement())
+  chr_id              String?  @db.Uuid
+  usr_id              String   @db.Uuid
+  role_id             Int
+
+  chr_usr_status      String   @default("ACTIVE") @db.VarChar(20)
+  chr_usr_created_at  DateTime @default(now())
+  chr_usr_created_by  String?  @db.Uuid
+
+  church tbl_church?     @relation(fields: [chr_id], references: [chr_id], onDelete: Cascade)
+  user   tbl_user_1      @relation(fields: [usr_id], references: [usr_id], onDelete: Cascade)
+  role   tbl_role_master @relation(fields: [role_id], references: [role_id])
+
+  @@unique([chr_id, usr_id, role_id])
+}
+
+
+//////////////////////////////////////////////////////
+// 9️⃣ PLATFORM ↔ ROLE MAPPING
+//////////////////////////////////////////////////////
+
+model tbl_platform_user {
+  plt_usr_id          Int      @id @default(autoincrement())
+  plt_id              String   @db.Uuid
+  role_id             Int
+
+  plt_usr_created_at  DateTime @default(now())
+
+  platform tbl_platform_1  @relation(fields: [plt_id], references: [plt_id], onDelete: Cascade)
+  role     tbl_role_master @relation(fields: [role_id], references: [role_id])
+
+  @@unique([plt_id, role_id])
+}
+
+//////////////////////////////////////////////////////
+// 🔟 AUDIT LOGS
+//////////////////////////////////////////////////////
+
+model tbl_audit {
+  adt_id              String   @id @default(uuid()) @db.Uuid
+
+  adt_tenant_scope    String   @db.VarChar(20)
+  chr_id              String?  @db.Uuid
+
+  adt_entity_type     String   @db.VarChar(50)
+  adt_entity_id       String   @db.Uuid
+  adt_action          String   @db.VarChar(50)
+
+  adt_actor_usr_id    String?  @db.Uuid
+  adt_actor_context   String?  @db.VarChar(50)
+
+  adt_ip_address      String?  @db.Text
+  adt_old_data        Json?
+  adt_new_data        Json?
+
+  adt_created_at      DateTime @default(now())
+}
