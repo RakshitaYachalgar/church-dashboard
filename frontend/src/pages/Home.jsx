@@ -1,8 +1,11 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import "../styles/home.css";
+import { useNavigate } from "react-router-dom"
+
 
 export default function Home() {
+   const navigate = useNavigate()
   return (
     <>
       <Navbar />
@@ -131,9 +134,9 @@ export default function Home() {
               <li>✔ Role-based access control</li>
               <li>✔ Secure data and accountability</li>
             </ul>
-            <a href="./church-register" className="secondary-btn small-btn">
+            <button onClick={() => navigate('/church-register')} className="secondary-btn small-btn">
               Register Your Church
-            </a>
+            </button>
           </div>
 
           <div className="audience-card highlighted">
